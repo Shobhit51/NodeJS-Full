@@ -14,9 +14,6 @@ fs.writeFileSync('writeMe.txt', readMe);
 // the third is a callback function which runs in case an error occurs while writing the file.
 
 fs.Writeile('writeMe.txt', 'utf-8', function(err, data) {
-  
-    // Write the data read from readeMe.txt
-    // to a file writeMe.txt
     if( !err )
         fs.writeFile('writeMe.txt', data, (err)=>{
             if( err ) {
