@@ -30,7 +30,6 @@ server.listen(port, host, (error) => {
 });	
 
 
-const server = http.createServer((request, response) => {:
 /*
 A constant named server is declared.
 a)The http.createServer() method is called, which creates an HTTP server object.
