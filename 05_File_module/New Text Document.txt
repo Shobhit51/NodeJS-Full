@@ -1,0 +1,309 @@
+Node.js File System (fs) Module
+The File System (fs) module is a built-in module in Node.js that allows you to interact with the file system in a way that is both synchronous and asynchronous. This module provides various methods to work with files, directories, and the underlying file system in your operating system.
+
+Key Methods in fs Module
+fs.readFileSync() and fs.readFile()
+
+These methods are used to read files.
+
+fs.readFileSync():
+
+Synchronous version of the readFile.
+
+It blocks the execution of the program until the file is completely read.
+
+Syntax:
+
+javascript
+Copy
+Edit
+const data = fs.readFileSync(path, encoding);
+Example:
+
+javascript
+Copy
+Edit
+const fs = require('fs');
+const data = fs.readFileSync('example.txt', 'utf-8');
+console.log(data);
+fs.readFile():
+
+Asynchronous version of readFileSync.
+
+It does not block the execution of the program.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.readFile(path, encoding, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.readFile('example.txt', 'utf-8', function(err, data) {
+  if (err) throw err;
+  console.log(data);
+});
+fs.writeFileSync() and fs.writeFile()
+
+These methods are used to write data into files.
+
+fs.writeFileSync():
+
+Synchronous version to write to files.
+
+It blocks the execution until the data is written.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.writeFileSync(path, data, encoding);
+Example:
+
+javascript
+Copy
+Edit
+fs.writeFileSync('example.txt', 'Hello, World!', 'utf-8');
+fs.writeFile():
+
+Asynchronous version of writeFileSync.
+
+It takes a callback function to handle success or error.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.writeFile(path, data, encoding, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.writeFile('example.txt', 'Hello, World!', 'utf-8', function(err) {
+  if (err) throw err;
+  console.log('Data has been written!');
+});
+fs.appendFileSync() and fs.appendFile()
+
+These methods allow you to append data to a file.
+
+fs.appendFileSync():
+
+Synchronous version of the append method.
+
+It appends data to the file. If the file doesn’t exist, it is created.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.appendFileSync(path, data, encoding);
+Example:
+
+javascript
+Copy
+Edit
+fs.appendFileSync('example.txt', '\nThis is an appended line.');
+fs.appendFile():
+
+Asynchronous version of appendFileSync.
+
+It appends data to the file and takes a callback to handle success or failure.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.appendFile(path, data, encoding, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.appendFile('example.txt', '\nThis is an appended line.', 'utf-8', function(err) {
+  if (err) throw err;
+  console.log('Data was appended to the file!');
+});
+fs.unlinkSync() and fs.unlink()
+
+These methods are used to delete a file.
+
+fs.unlinkSync():
+
+Synchronous version of unlink, used to delete files.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.unlinkSync(path);
+Example:
+
+javascript
+Copy
+Edit
+fs.unlinkSync('example.txt');
+fs.unlink():
+
+Asynchronous version of unlink.
+
+Takes a callback function that runs after the file is deleted.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.unlink(path, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.unlink('example.txt', function(err) {
+  if (err) throw err;
+  console.log('File deleted successfully');
+});
+fs.renameSync() and fs.rename()
+
+These methods are used to rename or move a file.
+
+fs.renameSync():
+
+Synchronous version of the rename method.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.renameSync(oldPath, newPath);
+Example:
+
+javascript
+Copy
+Edit
+fs.renameSync('oldFile.txt', 'newFile.txt');
+fs.rename():
+
+Asynchronous version of renameSync.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.rename(oldPath, newPath, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.rename('oldFile.txt', 'newFile.txt', function(err) {
+  if (err) throw err;
+  console.log('File renamed successfully');
+});
+fs.mkdirSync() and fs.mkdir()
+
+These methods are used to create directories.
+
+fs.mkdirSync():
+
+Synchronous method to create a directory.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.mkdirSync(path);
+Example:
+
+javascript
+Copy
+Edit
+fs.mkdirSync('newDirectory');
+fs.mkdir():
+
+Asynchronous method to create a directory.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.mkdir(path, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.mkdir('newDirectory', function(err) {
+  if (err) throw err;
+  console.log('Directory created!');
+});
+fs.readdirSync() and fs.readdir()
+
+These methods are used to read the contents of a directory.
+
+fs.readdirSync():
+
+Synchronous method to read the contents of a directory.
+
+Syntax:
+
+javascript
+Copy
+Edit
+const files = fs.readdirSync(path);
+console.log(files);
+Example:
+
+javascript
+Copy
+Edit
+const files = fs.readdirSync('./');
+console.log(files); // Prints all files in the current directory
+fs.readdir():
+
+Asynchronous method to read the contents of a directory.
+
+Syntax:
+
+javascript
+Copy
+Edit
+fs.readdir(path, callback);
+Example:
+
+javascript
+Copy
+Edit
+fs.readdir('./', function(err, files) {
+  if (err) throw err;
+  console.log(files);
+});
+File System Permissions
+Node.js also allows you to specify file permissions using fs.open() for creating and opening files with specific access modes. These permissions are passed as flags when opening a file.
+
+For example, here’s how you can specify file permissions while writing:
+
+javascript
+Copy
+Edit
+fs.open('example.txt', 'w', (err, fd) => {
+  if (err) throw err;
+  console.log('File opened and ready for writing.');
+});
+Conclusion
+The fs module is a core part of Node.js that allows interaction with the file system. It provides both synchronous and asynchronous methods to read, write, append, delete, rename, and manage files and directories. Understanding and using these methods efficiently is crucial for working with files in Node.js applications.
