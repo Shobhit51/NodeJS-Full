@@ -1,3 +1,15 @@
+
+Node.js is a server-side platform built on Google Chrome's V8 JavaScript engine, developed by Ryan Dahl and a 
+  team at Joyent in 2009. It is open-source, cross-platform, and initially released for Linux. Written in C, C++,
+  and JavaScript, Node.js allows JavaScript to run outside the browser, thanks to the V8 engine's speed and C++'s
+  system-level capabilities. This runtime environment uses an event-driven, non-blocking I/O model, making it 
+    lightweight and efficient for building real-time web applications. Its package ecosystem, NPM, is the largest
+      collection of open-source libraries globally, simplifying the development process.
+
+
+
+
+
 //we can not execute js outside the browser.
 
 //every browser have a unique engine
